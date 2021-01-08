@@ -55,11 +55,11 @@ In this project you got fiew entries point for `Products`
 
 `GET /api/products/`
 
-* Response: list of ALL products
->HTTP 200 OK
->Allow: OPTIONS, GET, POST
->Content-Type: application/json
->Vary: Accept
+* Response: list of ALL products   
+>HTTP 200 OK   
+>Allow: OPTIONS, GET, POST   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 [
     {
@@ -89,11 +89,11 @@ In this project you got fiew entries point for `Products`
     "price": "29.99"
 }
 ```
-* Response: the product created
->HTTP 201 Created
->Allow: OPTIONS, GET, POST
->Content-Type: application/json
->Vary: Accept
+* Response: the product created   
+>HTTP 201 Created   
+>Allow: OPTIONS, GET, POST   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 {
     "sku": "UGG-BB-Red-06",
@@ -106,11 +106,11 @@ In this project you got fiew entries point for `Products`
 
 `GET /api/products/UGG-BB-GRE-06/`
 
-* Response: detail of the requested sku
->HTTP 200 OK
->Allow: PUT, OPTIONS, DELETE, GET
->Content-Type: application/json
->Vary: Accept
+* Response: detail of the requested sku   
+>HTTP 200 OK   
+>Allow: PUT, OPTIONS, DELETE, GET   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 {
     "sku": "UGG-BB-GRE-06",
@@ -123,11 +123,11 @@ In this project you got fiew entries point for `Products`
 
 `GET /api/products/sold`
 
-* Response: list of product where qty <= 0
->HTTP 200 OK
->Allow: OPTIONS, GET
->Content-Type: application/json
->Vary: Accept
+* Response: list of product where qty <= 0   
+>HTTP 200 OK   
+>Allow: OPTIONS, GET   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 [
     {
@@ -142,11 +142,11 @@ In this project you got fiew entries point for `Products`
 
 `GET /api/products/available`
 
-* Response: list of product where qty \> 0
->HTTP 200 OK
->Allow: OPTIONS, GET
->Content-Type: application/json
->Vary: Accept
+* Response: list of product where qty \> 0   
+>HTTP 200 OK   
+>Allow: OPTIONS, GET   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 [
     {
@@ -161,14 +161,14 @@ In this project you got fiew entries point for `Products`
 
 `POST /api/products/qty`
 
-* request content:
+* request content:   
 ```JSON
 {
 	"sku": "UGG-BB-GRE-06",
     "qty": -3
 }
 ```
-or for positif:
+or for positif:   
 ```JSON
 {
 	"sku": "UGG-BB-GRE-06",
@@ -176,11 +176,11 @@ or for positif:
 }
 ```
 
-* Response: full object updated
->HTTP 200 OK
->Allow: OPTIONS, POST
->Content-Type: application/json
->Vary: Accept
+* Response: full object updated   
+>HTTP 200 OK   
+>Allow: OPTIONS, POST   
+>Content-Type: application/json   
+>Vary: Accept   
 ```JSON
 {
     "sku": "UGG-BB-GRE-06",
