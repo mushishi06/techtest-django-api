@@ -25,6 +25,11 @@ Stretch Goals:
 2) Documentation
 3) Data Persistence
 
+## Features
+
+- Django 3.1 and Python 3.7
+- [Pipenv](https://github.com/pypa/pipenv) for virtualenvs
+- [Docker] soon.
 
 ## First-time setup
 
@@ -43,3 +48,143 @@ $ pipenv shell
 ```
 (techtest-django-api) $ python manage.py runserver
 ```
+
+## API Details:
+
+In this project you got fiew entries point for `Products`
+
+`GET /api/products/`
+
+* Response: list of ALL products
+>HTTP 200 OK
+>Allow: OPTIONS, GET, POST
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+[
+    {
+        "sku": "UGG-BB-GRE-06",
+        "name": "green Ugg boots in the Bailey Bow style, size 6",
+        "qty": 0,
+        "price": "29.99"
+    },
+    {
+        "sku": "UGG-BB-PUR-06",
+        "name": "purple Ugg boots in the Bailey Bow style, size 6",
+        "qty": 6,
+        "price": "29.99"
+    }
+]
+```
+
+
+`POST /api/products/`
+
+* request content:
+```JSON
+{
+    "sku": "UGG-BB-Red-06",
+    "name": "red Ugg boots in the Bailey Bow style, size 6",
+    "qty": 100,
+    "price": "29.99"
+}
+```
+* Response: the product created
+>HTTP 201 Created
+>Allow: OPTIONS, GET, POST
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+{
+    "sku": "UGG-BB-Red-06",
+    "name": "red Ugg boots in the Bailey Bow style, size 6",
+    "qty": 100,
+    "price": "29.99"
+}
+```
+
+
+`GET /api/products/UGG-BB-GRE-06/`
+
+* Response: detail of the requested sku
+>HTTP 200 OK
+>Allow: PUT, OPTIONS, DELETE, GET
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+{
+    "sku": "UGG-BB-GRE-06",
+    "name": "green Ugg boots in the Bailey Bow style, size 6",
+    "qty": 0,
+    "price": "29.99"
+}
+```
+
+
+`GET /api/products/sold`
+
+* Response: list of product where qty <= 0
+>HTTP 200 OK
+>Allow: OPTIONS, GET
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+[
+    {
+        "sku": "UGG-BB-GRE-06",
+        "name": "green Ugg boots in the Bailey Bow style, size 6",
+        "qty": 0,
+        "price": "29.99"
+    }
+]
+```
+
+
+`GET /api/products/available`
+
+* Response: list of product where qty \> 0
+>HTTP 200 OK
+>Allow: OPTIONS, GET
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+[
+    {
+        "sku": "UGG-BB-PUR-06",
+        "name": "purple Ugg boots in the Bailey Bow style, size 6",
+        "qty": 6,
+        "price": "29.99"
+    }
+]
+```
+
+
+`POST /api/products/qty`
+
+* request content:
+```JSON
+{
+	"sku": "UGG-BB-GRE-06",
+    "qty": -3
+}
+```
+or for positif:
+```JSON
+{
+	"sku": "UGG-BB-GRE-06",
+    "qty": 6
+}
+```
+
+* Response: full object updated
+>HTTP 200 OK
+>Allow: OPTIONS, POST
+>Content-Type: application/json
+>Vary: Accept
+```JSON
+{
+    "sku": "UGG-BB-GRE-06",
+    "name": "green Ugg boots in the Bailey Bow style, size 6",
+    "qty": 0,
+    "price": "29.99"
+}
